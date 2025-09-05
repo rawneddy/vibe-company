@@ -1,0 +1,41 @@
+# OS-specific files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.swm
+*~
+
+# Environment / secrets
+.env
+.env.*
+.secrets/
+*.local
+*.local.*
+*.secret
+
+# Logs / archives
+*.log
+*.log.*
+*.tar
+*.tar.*
+*.zip
+*.gz
+*.bz2
+*.7z
