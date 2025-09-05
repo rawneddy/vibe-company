@@ -1,0 +1,16 @@
+# company.yaml
+# This file is read by the runtime at startup.
+# - entryAgent MUST match an Agent YAML in ./agents/<entryAgent>.yaml
+# - repo tells the runtime where to push branches and open PRs.
+# - paths.allowWrite constrains where agents may write in the company repo (MVP).
+
+apiVersion: company/v1
+kind: Company
+entryAgent: liaison
+repo:
+  url: git@github.com:rawneddy/vibe-company.git
+  defaultBranch: main
+paths:
+  allowWrite:
+    - docs/**
+    - agents/**

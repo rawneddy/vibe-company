@@ -1,0 +1,27 @@
+# agents/liaison.yaml
+# Defines the CEO Liaison agent instantiated by the runtime via the OpenAI Agents SDK.
+# The runtime will look for ./agents/<entryAgent>.yaml (as declared in company.yaml).
+
+apiVersion: company/v1
+kind: Agent
+metadata:
+  name: liaison
+spec:
+  model: gpt-5-mini
+  instructions: |
+    You are the CEO Liaison for the company.
+    Two-phase behavior:
+    1) DRAFT: Always return a "Proposed Plan" using the template provided.
+       Do NOT call tools in this phase.
+    2) EXECUTE: Only after the owner clicks Approve may you call tools.
+       Include 'approval_token' in every tool call.
+    Keep PRs small and reviewable.
+    Respect write scope: docs/** and agents/** only.
+  planTemplatePath: templates/liaison_plan_template.md
+  tools:
+    custom:
+      - write_file   # Branch + commit + push + open PR (implemented in the runtime)
+  permissions:
+    can_create_agents: false
+  budgets:
+    max_output_tokens: 2048
